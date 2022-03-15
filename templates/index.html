@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Boggle</title>
+    <link rel="stylesheet" href="/static/boggle.css">
+</head>
+
+<body>
+    <h1>Boggle Game</h1>
+
+    <section id="boggle">
+        <form action="/new-game">
+            <button class="reset">RESET</button>
+        </form>
+        <p class="instruction">
+            <b>GOAL: </b>
+            <br>Get the highest point total.
+            <br>
+            <br>
+            <b>TO GAIN POINTS: </b>
+            <br>
+            -----Players create words.
+            <br>
+            -----Words can be created from adjacent letters. Horizontal, vertical or diagonals.
+
+        </p>
+        <!--Step Two: Displaying the Board-->
+        <table class="board">
+            <tbody>
+                <!--iterate through each row game board-->
+                {% for row in game_board %}
+                <tr>
+                    <!--for each letter in each row, create a td-->
+                    {% for letter in row %}
+                    <td>{{ letter }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <p>High Score:
+            <b>{{ highscore }}</b>
+            in {{ nplays }} plays
+        </p>
+
+        <p>
+            Score: <b class="score">0</b>
+            Seconds Left: <b class="timer"></b>
+        </p>
+        <!--Step Two: Displaying the Board-->
+        <form method="POST" class="guessForm">
+            <input class="guessInput">
+            <button>Guess</button>
+        </form>
+
+
+        <p class="msg">
+            <!-- our JS will put messages here dynamically -->
+        </p>
+
+        <ul class="words">
+            <!-- append correct guess here -->
+        </ul>
+        <form action="/play-again" class="play-again">
+            <button>Play Again!</button>
+        </form>
+
+
+
+    </section>
+    <!--JQuery, Axio, static js file-->
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+    <script src="/static/boggle.js"></script>
+
+</body>
+
+</html>
