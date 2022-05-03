@@ -10,7 +10,10 @@ class FlaskTests(TestCase):
 
     def setUp(self):
         """Stuff to do before every test."""
-
+        """
+        makes us as testing client / represent version of our server 
+        /without restarting our server in command line
+        """
         self.client = app.test_client()
         app.config['TESTING'] = True
 

@@ -118,5 +118,5 @@ class Game {
 
 }
 
-let game = new Game("boggle", 20);
+let game = new Game("boggle", 60);
 
